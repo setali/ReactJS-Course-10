@@ -8,13 +8,23 @@ import React from 'react'
 // import DefaultProps from './7-DefaultProps'
 // import ListKeys from './8-ListKeys'
 // import Fragment from './9-Fragment'
-import Portal from './10-Portal'
+// import Portal from './10-Portal'
+// import Form from './11-Form'
+// import AdvanceSetState from './12-AdvanceSetState'
+// import CreateRef from './13-CreateRef'
+// import PureComponent from './14-PureComponent'
+import HOC from './15-HOC/App'
 
 class App extends React.Component {
   render () {
     return (
       <div>
-        <Portal />
+        <HOC />
+        {/* <PureComponent /> */}
+        {/* <CreateRef /> */}
+        {/* <AdvanceSetState /> */}
+        {/* <Form /> */}
+        {/* <Portal /> */}
         {/* <Fragment /> */}
         {/* <ListKeys /> */}
         {/* <DefaultProps name='Ali' color='green' />
