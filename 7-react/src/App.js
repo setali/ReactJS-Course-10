@@ -27,13 +27,15 @@ import React from 'react'
 // import UseMemo from './26-UseMemo'
 // import Memo from './27-Memo'
 // import UseRef from './28-UseRef'
-import UseCallback from './29-UseCallback'
+// import UseCallback from './29-UseCallback'
+import ContextApp from './30-context/App'
 
 class App extends React.Component {
   render () {
     return (
       <div>
-        <UseCallback />
+        <ContextApp />
+        {/* <UseCallback /> */}
         {/* <UseRef /> */}
         {/* <Memo /> */}
         {/* <UseMemo /> */}
