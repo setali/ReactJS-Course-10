@@ -33,3 +33,15 @@ header {
   color: red;
   margin-left: 0.5rem;
 }
+
+.sidebar {
+  flex: 1;
+}
+
+.content {
+  flex: 5;
+}
+
+.form-item {
+  margin: 1rem;
+}

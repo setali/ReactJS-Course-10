@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
-import ThemeContext from './contexts/ThemeContext'
-import UserContext from './contexts/UserContext'
+import { useContext } from 'react'
+import ThemeContext from '../../contexts/ThemeContext'
+import UserContext from '../../contexts/UserContext'
 
 export default function Home () {
   const theme = useContext(ThemeContext)

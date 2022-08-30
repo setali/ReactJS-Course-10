@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import ThemeContext from './contexts/ThemeContext'
-import UserContext from './contexts/UserContext'
+import ThemeContext from '../../contexts/ThemeContext'
+import UserContext from '../../contexts/UserContext'
+import { Link } from 'react-router-dom'
 
 export default class Header extends Component {
   render () {
     return (
       <UserContext.Consumer>
-        {({ user, isLoggedIn, isLoading, login, logout }) => (
+        {({ user, isLoggedIn, isLoading, logout }) => (
           <ThemeContext.Consumer>
             {theme => (
               <div className='box' style={{ ...theme }}>
@@ -20,9 +21,9 @@ export default class Header extends Component {
                           Logout
                         </span>
                       ) : (
-                        <span className='action' onClick={login}>
-                          Login
-                        </span>
+                        <Link to='/login'>
+                          <span className='action'>Login</span>
+                        </Link>
                       ))}
                   </div>
                 </header>
