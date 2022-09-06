@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span id="value"></span>
+    <button id="inc">+</button>
+    <button id="inc2">+2</button>
+    <button id="inc-if-odd">+ if odd</button>
+    <button id="dec">-</button>
+    <button id="dec-async">- async</button>
+
+    <script src="https://unpkg.com/@reduxjs/toolkit@1.8.5/dist/redux-toolkit.umd.js"></script>
+    <script>
+      const slice = RTK.createSlice({
+        name: 'counter',
+        initialState: 0,
+        reducers: {
+          increase: (state, { payload }) => state + payload,
+          decrease: (state, { payload }) => state - payload
+        }
+      })
+
+      // const reducer = slice.reducer
+      // const { increase, decrease } = slice.actions
+
+      const {
+        reducer,
+        actions: { increase, decrease }
+      } = slice
+
+      const store = RTK.configureStore({ reducer })
+
+      const { getState, dispatch, subscribe } = store
+
+      const value = document.getElementById('value')
+
+      function render () {
+        value.innerText = getState()
+      }
+
+      render()
+      subscribe(render)
+
+      document.querySelector('#inc').addEventListener('click', () => {
+        dispatch(increase(1))
+      })
+
+      document.querySelector('#inc2').addEventListener('click', () => {
+        dispatch(increase(2))
+      })
+
+      document.querySelector('#inc-if-odd').addEventListener('click', () => {
+        if (getState() % 2) {
+          dispatch(increase(1))
+        }
+      })
+
+      document.querySelector('#dec').addEventListener('click', () => {
+        dispatch(decrease(1))
+      })
+
+      document.querySelector('#dec-async').addEventListener('click', () => {
+        setTimeout(() => {
+          dispatch(decrease(1))
+        }, 1000)
+      })
+    </script>
+  </body>
+</html>
