@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
-import request from '../../tools/request'
-import { Link } from 'react-router-dom'
 import { EyeOutlined } from '@ant-design/icons'
-import Table from '../utils/Table'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setPersons } from '../../redux/actions/person'
+import { Link } from 'react-router-dom'
+import { getPersons } from '../../redux/actions/person'
+import Table from '../utils/Table'
 
 const columns = [
   { title: 'شناسه', key: 'id' },
@@ -30,29 +29,20 @@ const columns = [
 ]
 
 class List extends Component {
-  state = {
-    loading: true
-  }
-
   componentDidMount () {
-    request('/users')
-      .then(response => this.props.setItems(response.data))
-      .finally(() => this.setState({ loading: false }))
+    this.props.getItems()
   }
 
   render () {
-    const { loading } = this.state
-
     return (
       <div>
-        <Table data={this.props.persons} columns={columns} loading={loading} />
+        <Table data={this.props.persons} columns={columns} />
       </div>
     )
   }
 }
 
 const mapStateToProps = state => {
-  console.log('Person => ', state)
   return {
     persons: state.persons
   }
@@ -60,7 +50,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setItems: data => dispatch(setPersons(data))
+    getItems: () => dispatch(getPersons())
   }
 }
 

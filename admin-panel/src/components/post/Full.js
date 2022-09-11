@@ -1,15 +1,33 @@
 import { Divider } from 'antd'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import request from '../../tools/request'
+import { getPost } from '../../redux/actions/post'
+
+function useData (stateName) {
+  return useSelector(s => s[stateName])
+}
 
 export default function Full () {
   const { id } = useParams()
 
-  const [post, setPost] = useState({})
+  const dispatch = useDispatch()
+
+  // Wrong
+  // const { post, posts } = useSelector(state => ({
+  //   post: state.post,
+  //   posts: state.posts
+  // }))
+
+  // const post = useSelector(s => s.post)
+  // const posts = useSelector(s => s.posts)
+  const post = useData('post')
+  const posts = useData('posts')
+
+  console.log(posts.length)
 
   useEffect(() => {
-    request(`/posts/${id}`).then(({ data }) => setPost(data))
+    dispatch(getPost(id))
   }, [])
 
   return (

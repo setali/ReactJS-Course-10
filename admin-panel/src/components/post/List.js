@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import request from '../../tools/request'
-import { Link } from 'react-router-dom'
 import { EyeOutlined } from '@ant-design/icons'
-import Table from '../utils/Table'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { getPosts } from '../../redux/actions/post'
+import Table from '../utils/Table'
 
 const columns = [
   { title: 'شناسه', key: 'id' },
@@ -24,7 +24,7 @@ const columns = [
 
 class List extends Component {
   componentDidMount () {
-    request('/posts').then(response => this.props.setItems(response.data))
+    this.props.getItems()
   }
 
   render () {
@@ -36,18 +36,13 @@ class List extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log('Post => ', state)
+const mapStateToProps = state => ({
+  posts: state.posts
+})
 
-  return {
-    posts: state.posts
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setItems: data => dispatch({ type: 'POSTS', payload: data })
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  // setItems: data => dispatch(setPosts(data))
+  getItems: () => dispatch(getPosts())
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(List)
