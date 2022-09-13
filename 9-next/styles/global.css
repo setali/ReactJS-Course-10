@@ -1,0 +1,16 @@
+header,
+footer,
+aside,
+article {
+  border: 1px solid;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+article {
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+}
