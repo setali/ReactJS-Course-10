@@ -1,5 +1,6 @@
 import axios from 'axios'
-import Main from '../../layouts/Main'
+import Head from 'next/head'
+import Main from 'layouts/Main'
 // import { useRouter } from 'next/router'
 
 export default function Post ({ post = {} }) {
@@ -9,6 +10,9 @@ export default function Post ({ post = {} }) {
 
   return (
     <Main>
+      <Head>
+        <title>NextJS | {post.title}</title>
+      </Head>
       <h2>{post.title}</h2>
       <p>{post.body}</p>
     </Main>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Link from 'next/link'
-import Main from '../../layouts/Main'
+import Main from 'layouts/Main'
 
 export default function Users ({ users }) {
   return (

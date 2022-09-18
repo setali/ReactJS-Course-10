@@ -1,5 +1,5 @@
 // import { useEffect, useState } from 'react'
-import Main from '../../layouts/Main'
+import Main from 'layouts/Main'
 import axios from 'axios'
 import Link from 'next/link'
 

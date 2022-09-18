@@ -1,5 +1,5 @@
 import axios from 'axios'
-import Main from '../../layouts/Main'
+import Main from 'layouts/Main'
 
 export default function User ({ user }) {
   return (
