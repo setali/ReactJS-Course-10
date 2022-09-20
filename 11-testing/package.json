@@ -1,0 +1,17 @@
+{
+  "name": "11-testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sum.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.0.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.0.3"
+  }
+}
